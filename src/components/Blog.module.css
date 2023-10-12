@@ -1,0 +1,38 @@
+.btn{
+    background-color: rgb(255, 255, 255);
+    border: none;
+    margin: auto;
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: background-color 0.5s;
+    font-size: 1rem;
+}
+.btn:hover{
+    background-color: rgba(255, 233, 216, 0.2);
+}
+
+.textArea{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    font-size: 1.2rem;
+    border: 1px solid black;
+}
+.loading{
+    margin: 10% 50% 80% 50%;
+}
+.text{
+    width: 100%;
+}
+.title{
+    border: 1px solid rgb(194, 194, 194);
+    width: 100%;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
