@@ -16,7 +16,7 @@ const Blog=()=>{
 
     useEffect(()=>{
         setTimeout(()=>{
-            fetch('http://localhost:8000/blogs')
+            fetch('http://localhost:8000/posts')
             .then(res => {
                 return res.json();
             })
@@ -30,6 +30,8 @@ const Blog=()=>{
                 console.log(err.message);
             })
         }, 1000);
+
+        return ()=>console.log('cleanup');
     }, []);
 
     const handleChange=(e)=>{

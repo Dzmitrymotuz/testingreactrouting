@@ -1,0 +1,16 @@
+{
+    "posts": [
+        {
+        "title": "My first Blog",
+        "body": "Why do we use it?\nIt is a long discussion...",
+        "autor": "Dimitry",
+        "id": 1
+        },
+        {
+        "title": "My Second Blog",
+        "body": "So, kids, let's code, let your creativity flow, With HTML, JavaScript, React, watch your projects grow! Coding's an adventure, a journey so bright, With these tools in your hands, you'll reach new heights!",
+        "autor": "Frank",
+        "id": 2
+        }
+    ]
+}
