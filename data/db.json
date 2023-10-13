@@ -1,16 +1,22 @@
 {
-    "posts": [
-        {
-        "title": "My first Blog",
-        "body": "Why do we use it?\nIt is a long discussion...",
-        "autor": "Dimitry",
-        "id": 1
-        },
-        {
-        "title": "My Second Blog",
-        "body": "So, kids, let's code, let your creativity flow, With HTML, JavaScript, React, watch your projects grow! Coding's an adventure, a journey so bright, With these tools in your hands, you'll reach new heights!",
-        "autor": "Frank",
-        "id": 2
-        }
-    ]
+  "posts": [
+    {
+      "title": "New",
+      "body": " const navigateTo=()=>{\n        navigate('/');\n    }\n    const handleDelete=(post)=>{\n        fetch('http://localhost:8000/posts/' + post.id, {\n            method: 'GET'\n        }).then(()=>{\n            console.log(post.id + 'has been deleted')\n            navigateTo()\n        })\n\n    }",
+      "author": "mario",
+      "id": 12
+    },
+    {
+      "title": "dawdaa",
+      "body": "awdawd",
+      "author": "mario",
+      "id": 13
+    },
+    {
+      "title": "adawd",
+      "body": "awdawd",
+      "author": "yoshi",
+      "id": 14
+    }
+  ]
 }

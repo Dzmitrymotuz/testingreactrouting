@@ -4,17 +4,18 @@ import {useState} from 'react';
 import Posts from "./Posts";
 import { useEffect } from 'react';
 import useFetch from '../useFetch';
+import { useNavigate } from 'react-router-dom';
 
 const Blog=()=>{
-    // const {data, isPending, error} = useFetch('http://localhost:8000/blogs');
-
     const [isPending, setPending] = useState(true);
     const [posts, setPosts] = useState(null);
     const [error, setError] = useState(null);
     const [text, setText] = useState('')
     const [title, setTitle] = useState('')
 
+
     useEffect(()=>{
+        console.log('refreshed')
         setTimeout(()=>{
             fetch('http://localhost:8000/posts')
             .then(res => {
@@ -52,29 +53,25 @@ const Blog=()=>{
         setText('');
         setTitle('');
     }
+
     const handleDelete=(post)=>{
-        const newPosts = posts.filter(deletingPost => post !== deletingPost);
-        setPosts(newPosts);
+        const confirmDelete = window.confirm("Are you sure you want to delete this post?");
+        if (confirmDelete){
+            fetch('http://localhost:8000/posts/' + post.id, {
+            method: 'DELETE'
+        }).then(()=>{
+            console.log(post.id + 'has been deleted')
+            window.location.reload();
+        })}
     }
 
     return (<div>
-        <div className={styles.textArea}>
-            <form onSubmit={handleSubmit}>
-            <div>
-            <input placeholder="Title" value={title} className={styles.title} onChange={handleTitle}/>
-            </div>
-            <textarea placeholder='Content...' type="text" className={styles.text} value={text} onChange={handleChange}/>
-            <button type="submit" className={styles.btn}>Create post</button>
-            </form>
-        </div>
         {isPending && <div className={styles.loading}>Loading...</div>}
         {posts && posts.map((post, index)=>(
             <Posts 
             handleDelete={handleDelete} 
-            key={index} 
-            post={post} 
-            posts={posts} 
-            setPosts={setPosts} 
+            key={post.id} 
+            post={post}  
             index={index}></Posts>
         ))}
     </div>)

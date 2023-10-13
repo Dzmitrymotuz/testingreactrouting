@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+    text-decoration: none;
 }
 
 .post{
@@ -21,15 +22,32 @@
     border: 1px solid rgba(255, 221, 195, 0.381);
     box-shadow: 5px 5px 5px 0px rgba(184, 93, 18, 0.097);
 }
+.metainfo{
+    display: flex;
+    width: 90%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0% 5% 0% 0%;
+}
+.metainfo p{
+    color: rgb(175, 175, 175);
+    font-size: 0.8rem;
+}
 .title{
     align-items: center;
     font-size: 1.5rem;
+}
+.title:hover{
+    cursor: pointer;
+    box-shadow: 5px 5px 5px 0px rgba(184, 93, 18, 0.097);
+
 }
 .delete{
     border: none;
     background-color: rgba(255, 0, 0, 0);
     color: brown;
-    margin: 10px 10px 20px 20px;
+    margin: 10px 10px 20px 90%;
 }
 .delete:hover{
     color: red;
