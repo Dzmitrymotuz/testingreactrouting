@@ -4,7 +4,7 @@ import {useState} from 'react';
 import Posts from "./Posts";
 import { useEffect } from 'react';
 import useFetch from '../useFetch';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const Blog=()=>{
     const [isPending, setPending] = useState(true);
@@ -12,6 +12,8 @@ const Blog=()=>{
     const [error, setError] = useState(null);
     const [text, setText] = useState('')
     const [title, setTitle] = useState('')
+    const [searchtext, setSearchText] = useState('')
+
 
 
     useEffect(()=>{
@@ -22,7 +24,8 @@ const Blog=()=>{
                 return res.json();
             })
             .then((data) => {
-                setPosts(data);
+                var reversedPosts = [...data].reverse()
+                setPosts(reversedPosts);
                 setPending(false);
             })
             .catch( err => {
@@ -31,27 +34,13 @@ const Blog=()=>{
                 console.log(err.message);
             })
         }, 1000);
-
-        return ()=>console.log('cleanup');
     }, []);
 
-    const handleChange=(e)=>{
-        setText(e.target.value);
-    }
-    const handleTitle=(e)=>{
-        setTitle(e.target.value);
-    }
-
-    const handleSubmit=(event)=>{
-        event.preventDefault();
-        const newPost = {
-            id: posts.length + 1,
-            title: title,
-            body: text,
-        }
-        setPosts([... posts, newPost])
-        setText('');
-        setTitle('');
+    const search=()=>{
+        const filteredPosts = posts.filter(post => {
+            return post.title.toLowerCase().includes(searchtext.toLowerCase());
+        });
+        setPosts(filteredPosts);
     }
 
     const handleDelete=(post)=>{
@@ -63,9 +52,13 @@ const Blog=()=>{
             console.log(post.id + 'has been deleted')
             window.location.reload();
         })}
-    }
+    }   
 
     return (<div>
+            <div>
+                <input onChange={(e)=>setSearchText(e.target.value)} value={searchtext}></input>
+                <button onClick={()=>search()}>Search</button>
+            </div>
         {isPending && <div className={styles.loading}>Loading...</div>}
         {posts && posts.map((post, index)=>(
             <Posts 

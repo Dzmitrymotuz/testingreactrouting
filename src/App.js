@@ -15,6 +15,7 @@ function App() {
           <Route path="/page" element={<Page/>}/>
           <Route path="/blog/new" element={<Create/>}/>
           <Route path="/blog/:id" element={<PostDetails/>}/>
+          <Route path="*" element={<div>404</div>}/>
         </Routes>
       </div>
       
